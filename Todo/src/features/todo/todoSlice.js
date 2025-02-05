@@ -23,11 +23,10 @@ export const todoSlice = createSlice({
     },
 
     markAsDone: (state, action) => {
-        state.todos = state.todos.map((todo) => {
-            if(todo.id === action.payload) {
-                todo.isDone = true;
-            }
-        });
+      const todo = state.todos.find((todo) => todo.id === action.payload);
+      if (todo) {
+        todo.isDone = true;
+      }
     },
   },
 });
